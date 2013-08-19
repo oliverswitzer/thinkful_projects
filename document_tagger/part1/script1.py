@@ -32,7 +32,8 @@ for i, doc in enumerate(documents):
   author = re.search(author_search, doc)
   translator = re.search(translator_search, doc)
   illustrator = re.search(illustrator_search, doc)
-  if author: 
+
+  if author:        #if there is a match for author, set the value author equal to the matched value in the group
     author = author.group('author')
   if translator:
     translator = translator.group('translator')
