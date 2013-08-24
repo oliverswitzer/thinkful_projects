@@ -1,0 +1,82 @@
+import re
+import sys
+import os
+
+
+directory = sys.argv[1]  #/Users/oliverswitzer/Programming/Python/thinkful_projects/document_tagger/part2/texts
+
+#************* For Matching Document Info ***************
+
+# PREPARE OUR REGEXES FOR METADATA SEARCHES #
+# we'll use re.compile() here, which allows you to assign a regex pattern
+# to a variable. We'll do this for each our metadata fields.
+# 
+# Also note how we're using paretheses to create two search groups. Looking
+# at title_search, see how we use one group to match on the presence of "title:".
+# 
+# Also, note how in the second group is a named group -- we use ?p<name> .
+# 
+# Finally, note that we're passing the re.IGNORECASE flag as an optional
+# argument to re.compile. We're doing this because it's human beings who create
+# the metadata headers at the top of Project gutenberg docs, and we want to account 
+# for possibility of "title: Some Title", "Title: Some Title", and "TITLE: Some Title").
+title_search = re.compile(r'(title:\s*)(?P<title>.*(\n\s{2}.*)*)', re.IGNORECASE)  #(\n\s{2}.*)* allows regex to match multiple lines for title
+author_search = re.compile(r'(author:)(?P<author>.*)', re.IGNORECASE)
+translator_search = re.compile(r'(translator:)(?P<translator>.*)', re.IGNORECASE)
+illustrator_search = re.compile(r'(illustrator:)(?P<illustrator>.*)', re.IGNORECASE)
+
+
+
+#************* For Keyword Search ***************
+
+# first we need to do something with the user supplied keywords
+# which we're getting with sys.argv. Remember, the script name itself
+# is at index 0 in sys.argv, so we'll slice everything from index 1 forward.
+searches = {}
+
+for kw in sys.argv[2:]:
+	searches[kw] = re.compile(r'\b' + kw + r'\b', re.IGNORECASE)
+
+#************* For loop to return doc info AND keyword info in each iteration ***************
+
+# now iterate over the documents and extract and print output about metadata
+# for each one. Note the use of enumerate here, which gives you a counter variable
+# (in this case 'i') that keeps track of the index of the list (in this case documents)
+# your currently on in your loop. You should memorize how enumerate works, and google it
+# if you need more explanation. It's a highly productive built in function, and there are
+# common problems that you'll encounter as a programmer that enumerate is great for.
+
+for i, fl in enumerate(os.listdir(directory)):
+	if fl.endswith(".txt"):
+		print "Processing document {}".format(fl)
+
+	fl_path = os.path.join(directory, fl)
+
+	with open(fl_path, 'r') as f:         #open the file as f
+            full_text = f.read()  
+
+	title = re.search(title_search, full_text).group('title')
+	author = re.search(author_search, full_text)
+	translator = re.search(translator_search, full_text)
+	illustrator = re.search(illustrator_search, full_text)
+
+	if author:        #if there is a match for author, set the value author equal to the matched value in the group
+		author = author.group('author')
+	if translator:
+		translator = translator.group('translator')
+	if illustrator:
+		illustrator = illustrator.group('illustrator')
+
+	print "***" * 25
+	print "Here's the info for doc {}:".format(i)
+	print "Title:  {}".format(title)
+	print "Author(s): {}".format(author)
+	print "Translator(s): {}".format(translator)
+	print "Illustrator(s): {}".format(illustrator)
+	print """
+
+	"""
+	print "Here's the keyword count info for doc {}:".format(i)
+	for search in searches:
+		print "\"{0}\": {1}".format(search, len(re.findall(searches[search], full_text)))
+	print "\n"
