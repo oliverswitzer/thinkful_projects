@@ -14,8 +14,9 @@ pattern_dict = dict(title=title_search,
 				   illustrator=illustrator_search)
 
 def metadata_search(pattern_dict, text):
+	"""returns results for metadata search in text"""
+	
 	results = {}
-
 	for k in pattern_dict:
 		result = re.search(pattern_dict[k], text)
 		if result:
@@ -31,12 +32,12 @@ def path_creator(directory, fl):
 def file_reader(fl_path):
 	with open(fl_path, 'r') as f:         #open the file as f for reading
 		full_text = f.read()
+	return full_text
 
-def compile_searches(keywords):
-	searches = []
-	for kw in keywords:
-		searches[kw] = re.compile(r'\b' + kw + r'\b', re.IGNORECASE)
-	return searches
+def compile_searches(kws):
+	"""Returns ditionary of keyword regular expression patterns"""
+	result = {kw: re.compile(r'\b' + kw + r'\b') for kw in kws}
+	return result
 
 def keyword_count(pattern, text):
     """Returns the number of matches for a keyword in a given text"""

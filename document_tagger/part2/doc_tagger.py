@@ -63,9 +63,9 @@ for i, fl in enumerate(os.listdir(directory)):   #not sure if enumerate was enti
 	            full_text = f.read()  			
 
 		title = re.search(title_search, full_text).group('title')	#using compiled regex to search for 
-		author = re.search(author_search, full_text)				#title, author translator and illustrator in each doc
-		translator = re.search(translator_search, full_text)		#that is iterated over
-		illustrator = re.search(illustrator_search, full_text)
+		author = re.search(author_search, full_text).group('author')				#title, author translator and illustrator in each doc
+		translator = re.search(translator_search, full_text).group('translator')		#that is iterated over
+		illustrator = re.search(illustrator_search, full_text).group('illustrator')
 
 		if author:        #if there is a match for author, set the value author equal to the matched value in the group
 			author = author.group('author')
