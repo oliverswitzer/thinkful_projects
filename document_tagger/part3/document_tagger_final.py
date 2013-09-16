@@ -61,8 +61,8 @@ def main_func(path, keywords):
 			print "\n\nKEYWORDS\n\n"
 
 			for kw in kw_patterns:
-				key_count = keyword_count(k, text)
-				print "{0}:{1}".format(k, key_count[k])
+				key_count = keyword_count(kw, text)
+				print "{0}:{1}".format(kw, key_count)
 
 			print "***"*25
 
