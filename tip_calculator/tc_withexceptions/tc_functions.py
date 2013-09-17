@@ -17,7 +17,9 @@ def calculate_meal_costs(meal_base, tax_rate, tip_rate):
                     tax_rate=tax_rate,
                     tip_rate=tip_rate,
                     tax_value=tax_value,
-                    total = total)
+                    total = total,
+                    meal_with_tax = meal_with_tax,
+                    tip_value = tip_value)
     return meal_info
  
  
