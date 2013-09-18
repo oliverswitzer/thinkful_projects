@@ -16,4 +16,4 @@ class DiscountCalculatorTests(unittest.TestCase):
 	def absolute_discount_test(self):
 		discount_calculator = DiscountCalculator()
 		result = discount_calculator.calculate(250, 5, 'absolute')
-		self.assertEqual(245, result)
+		self.assertEqual(5, result)
