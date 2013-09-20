@@ -3,6 +3,8 @@ class DiscountCalculator(object):
 		if discount_type == 'percent':
 			discount_percent = float(discount_amount) / 100
 			discount = float(total)*discount_percent
-		else:
+		elif discount_type == 'absolute':
 			discount = discount_amount
+		else:
+			raise ValueError("Invalid discount amount")
 		return discount
