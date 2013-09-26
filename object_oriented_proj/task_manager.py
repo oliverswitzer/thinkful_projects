@@ -38,7 +38,7 @@ if __name__ == "__main__":
 	running = True
 	while running: 
 		task = raw_input("Enter a task you need to complete: ")   #Collect a task value to be placed in task dictionary
-		priority = raw_input("From 1-10, how important is this task? ")
+		priority = int(raw_input("From 1-10, how important is this task? "))
 		examp_task_dict.addtask(task, priority)  #appends task and corresponding priority number to examp_task_dict dictionary
 
 		print "***" * 25
