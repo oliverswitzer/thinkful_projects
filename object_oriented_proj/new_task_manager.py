@@ -20,10 +20,9 @@ class TaskList:
 		print "Your tasks in order of priority, monsieur:"
 		for task, priority in self.sorted_tasks:
 			print task,
-			print " *** ",
-			print priority
-			# string_priority = " " + str(priority) 
-			# print string_priority.rjust(20, '*') 
+			# print " *** ",
+			string_priority = " " + str(priority) 
+			print string_priority.rjust(20, '*') 
 			   #pads the value of the dictionary by 20 "*"
 		print """
 		
@@ -68,3 +67,4 @@ if __name__ == "__main__":
 
 
 	# {'feed dog':'3', 'eat something':'5', 'do math homework':'1'}
+	
