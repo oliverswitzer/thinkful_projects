@@ -18,18 +18,17 @@ class TaskList:
 			raise ValueError("Please enter a integer from 1-10 for the priority of this task")
 
 
-	def sort_tasks(self, task_dict_input):
+	def sort_tasks(self):
 
-		sorted_tasks = sorted(task_dict_input.iteritems(), key=operator.itemgetter(1), reverse = True) #trying to sort the dictionary of 
-																									   # tasks according to the numerical priority value of each task
-		return sorted_tasks
+		self.sorted_tasks = sorted(self.task_dict.iteritems(), key=operator.itemgetter(1), reverse = True) #trying to sort the dictionary of 
+		print self.sorted_tasks																							   # tasks according to the numerical priority value of each task
 
 	
-	def printtasks(self, sorted_tasks):  #prints out the task in an ordered list by priority
-		for k, v in self.sorted_tasks.iteritems():
+	def printtasks(self):  #prints out the task in an ordered list by priority
+		for k, v in self.sorted_tasks:
 			print k,
 			print " ",
-			print v.rjust(20, '*')    #pads the value of the dictionary by 20 "*"
+			print " " + str(v).rjust(20, '*')    #pads the value of the dictionary by 20 "*"
 
 if __name__ == "__main__":
 
@@ -46,8 +45,8 @@ if __name__ == "__main__":
 		if quit == "q":
 			running = False
 
-	sorted_tasks = examp_task_dict.sort_tasks(examp_task_dict)	#passes the examp_task_dict dictionary to the sort tasks function. Sorts by order of priority
-	examp_task_dict.printtasks(examp_task_dict)  #prints the tasks out in order. See printtasks function
+	examp_task_dict.sort_tasks()	#passes the examp_task_dict dictionary to the sort tasks function. Sorts by order of priority
+	examp_task_dict.printtasks()  #prints the tasks out in order. See printtasks function
 
 
 
