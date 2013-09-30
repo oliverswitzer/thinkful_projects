@@ -36,9 +36,9 @@ class TaskList:
 
 class NewTask:
 
-	def __init__(self):
-		self.task = raw_input("Please input a task: ")
-		self.priority = int(raw_input("Please input a value for the priority of this task: "))
+	def __init__(self, task, priority):
+		self.task = task
+		self.priority = priority
 		if self.task == "":   #if task left blank raise syntax error
 			raise SyntaxError("Please input a task")
 		elif self.priority == "": #if priority left blank, raise syntax error
@@ -47,7 +47,6 @@ class NewTask:
 			raise ValueError("Please enter a text value for the task")
 		elif not isinstance(self.priority, int):   #if user doesnt enter int value for priority gives error
 			raise ValueError("Please enter a integer from 1-10 for the priority of this task")
-
 		
 if __name__ == "__main__":
 
@@ -55,7 +54,9 @@ if __name__ == "__main__":
 	
 	running = True
 	while running: 
-		task_input = NewTask()  #Create new task instance value to be placed in task dictionary
+		task = raw_input("Please input a task: ")
+		priority = int(raw_input("Please input a value for the priority of this task: "))
+		task_input = NewTask(task, priority)  #Create new task instance value to be placed in task dictionary
 		examp_task_dict.addtask(task_input.task, task_input.priority)  #appends task and corresponding priority number to examp_task_dict dictionary
 
 		quit = raw_input("*** Quit? Press 'q' to quit and see tasks or press enter to continue: ")
