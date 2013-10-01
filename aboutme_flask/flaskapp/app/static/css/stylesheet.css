@@ -1,7 +1,7 @@
 body {
   margin-top: 200px;
   text-align: center;
-  background: url("../static/img/bkbrdige.png");
+  background: url('img/bkbridge.png');
   background-size: cover;
   background-position: center;
   color: white;
