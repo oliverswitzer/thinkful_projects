@@ -4,8 +4,8 @@
 
 
 {% block content %}
-<img src="{{ url_for('static', filename='img/mypic.jpeg') }}" />
-<p>Hi! I'm Oliver, a NYC-based font-end developer. Say hello!</p>
+<img id="mainpic" src="{{ url_for('static', filename='img/mypic.jpeg') }}" />
+<p>Hi! I'm Oliver, a NYC-based (aspiring) web developer. Say hello!</p>
 <input type="email" placeholder="Your email">
 <input type="submit">
 {% endblock %}

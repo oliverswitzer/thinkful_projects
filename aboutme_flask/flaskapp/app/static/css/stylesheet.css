@@ -1,7 +1,11 @@
+/** {
+  border: 1px red dashed;
+}*/
+
 body {
   margin-top: 200px;
   text-align: center;
-  background: url('img/bkbridge.png');
+  background: url('../img/bkbridge.png');
   background-size: cover;
   background-position: center;
   color: white;
@@ -11,6 +15,29 @@ body {
 p {
   font-size: 22px;
 }
+
+
+#btnbar {
+  height: 200px;
+  margin-top: 15px;
+}
+
+.btn {
+  display: inline-block; 
+  margin: 10px;
+  background: white;
+  width: 120px;
+  height: 110px;
+  border-radius: 120px;
+  border: 2px solid black;
+}
+
+/*#btnbar img { 
+  width: 120px;
+  height: 110px;
+  border-radius: 120px;
+  border: 2px solid red;
+}*/
 
 input {
   border: 0;
@@ -23,7 +50,7 @@ input[type="submit"] {
   color: white;
 }
 
-img {
+#mainpic {
   width: 250px;
   height: 250px;
   border-radius: 250px;
