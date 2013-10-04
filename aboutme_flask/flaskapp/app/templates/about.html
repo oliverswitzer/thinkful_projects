@@ -5,7 +5,13 @@
 
 {% block content %}
 <img id="mainpic" src="{{ url_for('static', filename='img/mypic.jpeg') }}" />
-<p>Hi! I'm Oliver, a NYC-based (aspiring) web developer. Say hello!</p>
-<input type="email" placeholder="Your email">
+<p>Hi! I'm Oliver, a NYC-based (aspiring) web developer. Say hello!</p>   <!-- main content -->
+<input type="email" placeholder="Your email">  <!-- email submit form -->
 <input type="submit">
+{% endblock %}
+
+{% block extrabutton %}
+<a href="{{ url_for('cats') }}">
+	<img class="btn" id="cat" src="{{ url_for('static', filename='img/catbutton.png') }}"
+</a>
 {% endblock %}

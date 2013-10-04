@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}Cats!{% endblock %}
+
+{% block content %} 
+
+<h1 id="catheader">Suprise! Random cat gif for you.</h1>
+
+<img src="{{ randomcats }}">  t<!-- his doesnt work :( -->
+<img src="{{ url_for('static', filename='img/catgifs/Cat-gif-cats-15443758-242-183.gif') }}"> <!-- this does work -->
+{% endblock %}
+
+{% block extrabutton %}
+<a href="{{ url_for('home') }}">
+	<img class="btn" src="{{ url_for('static', filename='img/home3.png') }}"
+</a>
+
+{% endblock %}

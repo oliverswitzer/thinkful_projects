@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
+<!-- main template for about me page. Extends to about.html -->
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-
 		<title>{% block title %}{% endblock %}</title>
-
 		<meta name="description" content="About Me Page">
   		<meta name="author" content="Oliver Switzer">
-
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
-
 		<!--[if lt IE 9]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   		<![endif]-->
@@ -35,6 +33,10 @@
 			<a href="http://www.linkedin.com/pub/oliver-switzer/56/a08/30">
 				<img class="btn" src="{{ url_for('static', filename='img/linkedin2.png') }}"
 			</a>
+
+			{% block extrabutton %}{% endblock %}
+
+
 		</div>
 
 	</body>
