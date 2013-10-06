@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}Cats!{% endblock %}
+
+{% block content %} 
+
+<h1 id="catheader">Suprise! Random cat gif for you:</h1>
+
+<div id="catframe">
+	<img src="{{ url_for('static', filename='img/catgifs/{}'.format(catgif)) }}">
+</div>
+
+</br>
+
+<form action="{{ url_for('cats') }}">
+	<input id="catbtn" type="submit" value="Moar cats plz">
+</form> 
+
+<!-- <div id="catbtn"><a href="{{ url_for('cats') }}">Moar cats plz</a></div> -->
+{% endblock %}
+
+{% block extrabutton %}
+<a href="{{ url_for('home') }}">
+	<img class="btn" src="{{ url_for('static', filename='img/home3.png') }}"
+</a>
+{% endblock %}
